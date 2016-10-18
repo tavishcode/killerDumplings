@@ -90,7 +90,6 @@ def playermoveleft():
     # Get current player position
     x, y = player.position()
 
-    # Part 2.2 - Keeping the player inside the window
     # Player should only be moved only if it is within the window range
     if x - player_speed > -window_width / 2 + window_margin:
         player.goto(x - player_speed, y)
@@ -102,7 +101,6 @@ def playermoveright():
     # Get current player position
     x, y = player.position()
 
-    # Part 2.2 - Keeping the player inside the window
     # Player should only be moved only if it is within the window range
     if x + player_speed < window_width / 2 - window_margin:
         player.goto(x + player_speed, y)
@@ -123,7 +121,6 @@ def updatescreen():
     dx = enemy_speed*enemy_direction
     dy = 0
 
-    # Part 3.3
     # Perform several actions if the enemies hit the window border
     
     x0 = enemies[0].xcor()
@@ -149,7 +146,6 @@ def updatescreen():
             else:
                 enemy.shape("patrick1.gif")
 
-    # Part 4.3 - Moving the laser
     # Perfrom several actions if the laser is visible
 
     if laser.isvisible():
@@ -191,9 +187,6 @@ def updatescreen():
         if bonus.isvisible():
             x, y = bonus.position()
             bonus.goto(x-5,y)      
-    
-
-    # Part 5.1 - Gameover when one of the enemies is close to the player
 
     # If one of the enemies is very close to the player, the game will be over
     for enemy in enemies:
@@ -204,8 +197,6 @@ def updatescreen():
             # Return and do not run updatescreen() again
             return
 
-    # Part 5.2 - Gameover when you have killed all enemies
-
     count=0
     for enemy in enemies:
         if enemy.isvisible():
@@ -214,8 +205,6 @@ def updatescreen():
         gameover("You Win!")
         win_sound.play()
         return
-
-    # Part 3.1 - Controlling animation using the timer event
     
     turtle.update()
     turtle.ontimer(updatescreen, update_interval)
@@ -225,7 +214,7 @@ def updatescreen():
 """
 
 def shoot():
-    # Part 4.2 - the shooting function
+
     # Shoot the laser only if it is not visible
     if not laser.isvisible():
         laser.showturtle()
@@ -271,7 +260,6 @@ def gamestart(x,y):
     player.up()
     player.goto(player_init_x, player_init_y)
 
-    # Part 2.1
     # Map player movement handlers to key press events
     turtle.onkeypress(playermoveleft, "Left")
     turtle.onkeypress(playermoveright, "Right")
