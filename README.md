@@ -1,6 +1,6 @@
 # Killer Dumplings
 
-### A space invader clone using python's turtle graphics which allows you to shoot dumplings.
+### A space invader clone using python's turtle graphics
 
 Developed for a course assignment on Python programming
 
